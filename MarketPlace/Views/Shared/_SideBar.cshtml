@@ -1,0 +1,203 @@
+﻿<div class="page-sidebar-wrapper">
+    <div class="page-sidebar navbar-collapse collapse">
+
+        <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+            <li class="sidebar-toggler-wrapper">
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                <div class="sidebar-toggler">
+
+                </div>
+                <!-- END SIDEBAR TOGGLER BUTTON -->
+            </li>
+            <li class="start active open">
+                <a href="javascript:;">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="title inner-submenu" onclick="location.href='@Url.Action("ProjectDashboard","Project", new { ProjectID = Request.QueryString["ProjectID"] })'">Dashboard</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <div type="button" data-toggle="collapse" data-target="#demo1" class="inner-submenu">
+                            <i class="far fa-square"></i> BASIC CONTROLS <i class="fas fa-sort-down"></i>
+                        </div>
+                        <div id="demo1" class="collapse">
+                            <div><a href="javascript:;">Configuration settings</a></div>
+                            <div><a href="@Url.Action("index", "Directory" , new { ProjectID = Request.QueryString["ProjectID"] })">Directory</a></div>
+                            <div><a href="@Url.Action("GetAllRoles", "User")">Role Management</a></div>
+                            <div><a href="javascript:;">Documents</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div type="button" data-toggle="collapse" data-target="#demo2" class="inner-submenu">
+                            <i class="far fa-money-bill-alt"></i>Financials <i class="fas fa-sort-down"></i>
+                        </div>
+                        <div id="demo2" class="collapse">
+                            <div><a href="@Url.Action("AddEditPrimeContract", "PrimeContract" , new {Tab = "contract1",primeContractId='0',projectID = Request.QueryString["ProjectID"],isUpdated=false})">Prime Contract</a></div>
+                            <div><a href="@Url.Action("index", "Budget", new { ProjectID = Request.QueryString["ProjectID"] })">Budget</a></div>
+                            <div><a href="javascript:;">Direct Costs</a></div>
+                            <div><a href="@Url.Action("CommitmentListing", "Commitment", new { ProjectID = Request.QueryString["ProjectID"] })">Commitments</a></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div type="button" data-toggle="collapse" data-target="#demo3" class="inner-submenu">
+                            <i class="fas fa-star"></i> Quality and Safety <i class="fas fa-sort-down"></i>
+                        </div>
+                        <div id="demo3" class="collapse">
+                            <div>
+                                @*<a href="@Url.Action("AddEditObservations","ObservationsProject", new {observationID="0", projectID = Request.QueryString["ProjectID"] })">
+
+                                        Observations
+                                    </a>*@
+                                <a href="@Url.Action("GetAllObservations","ObservationsProject", new {observationID="0", projectID = Request.QueryString["ProjectID"] })">
+                                    @*<i class="far fa-calendar-alt"></i>
+                                        <span class="title">Observations</span>
+                                        <span class="arrow "></span>*@
+                                    Observations
+                                </a>
+
+
+                            </div>
+                            @*<div><a href="javascript:;">Observations</a></div>*@
+                            <a href="@Url.Action("ViewInspectionListing", "Inspection" , new {projectId = Request.QueryString["projectID"]})">Inspections</a>
+                            <div><a href="javascript:;">Instructions</a></div>
+                            <div><a href="javascript:;">Incidents</a></div>
+                            <div><a href="javascript:;">Punch Lists</a></div>
+                            <div><a href="@Url.Action("CreateLog", "CreateLog", new { ProjectID = Request.QueryString["ProjectID"] })">All Daily Logs</a></div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                @*<div type="button" data-toggle="collapse" data-target="#demo4" class="inner-submenu">*@
+                <a href="@Url.Action("AddEditChangeEvent", "ChangeEvent", new { ProjectID = Request.QueryString["ProjectID"] })">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="title">Change Events</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            @*<li>
+                    <a href="@Url.Action("CreateRFQ","RFQ", new {projectId = Request.QueryString["ProjectID"],isUpdated=false,rfqId='0',changeEventId=76 })">
+                        <i class="far fa-calendar"></i>
+                        <span class="title">RFQ</span>
+                        <span class="selected"></span>
+                        <span class="arrow open"></span>
+                    </a>
+                </li>*@
+            <li class="">
+                <a href="@Url.Action("Index","Schedule", new { ProjectID = Request.QueryString["ProjectID"] })">
+                    <i class="far fa-calendar"></i>
+                    <span class="title">Schedule</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+                <!--<ul class="sub-menu">
+                    <li class="active">
+                        <a href="ecommerce_index.html">
+                        <i class="icon-home"></i>
+                        Dashboard</a>
+                    </li>
+                </ul>-->
+            </li>
+            <li>
+                <a href="@Url.Action("AddEditMeeting","Meeting", new { ProjectID = Request.QueryString["ProjectID"],meetingId="0"})">
+                    <i class="fas fa-users"></i>
+                    <span class="title">Meetings</span>
+                    <span class="arrow "></span>
+                </a>
+                <!--<ul class="sub-menu">
+                    <li>
+                        <a href="layout_horizontal_sidebar_menu.html">
+                        Horizontal & Sidebar Menu</a>
+                    </li>
+                </ul>-->
+            </li>
+            @*<li>
+                     <a href="@Url.Action("GetAllSubmittals","Submittal", new {tab = "tab1",submittalId=Request.QueryString["submittalId"], projectID = Request.QueryString["ProjectID"] })">
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="title">Submittals1</span>
+                        <span class="arrow "></span>
+                    </a>
+                </li>*@
+            <li>
+
+                <a href="@Url.Action("GetAllSubmittals","Submittal", new {tab = "tab1",submittalId='0', projectID = Request.QueryString["ProjectID"] })">
+                    <i class="far fa-calendar-alt"></i>
+                    <span class="title">Submittals</span>
+                    <span class="arrow "></span>
+                </a>
+
+            </li>
+
+            <li class="">
+                <a href="@Url.Action("ViewTransmittal","Transmittal", new {projectID = Request.QueryString["ProjectID"]})">
+                    <i class="far fa-calendar"></i>
+                    <span class="title">Transmittal</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            <!--<ul class="sub-menu">
+                <li>
+                    <a href="ui_general.html">
+                    General Components</a>
+                </li>
+            </ul>-->
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fas fa-clock"></i>
+                    <span class="title">Timesheet</span>
+                    <span class="arrow "></span>
+                </a>
+                <!--<ul class="sub-menu">
+                    <li>
+                        <a href="components_pickers.html">
+                        Date & Time Pickers</a>
+                    </li>
+                </ul>-->
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fas fa-info"></i>
+                    <span class="title">Inventory</span>
+                    <span class="arrow "></span>
+                </a>
+                <!--<ul class="sub-menu">
+                    <li>
+                        <a href="components_pickers.html">
+                        Date & Time Pickers</a>
+                    </li>
+                </ul>-->
+            </li>
+            <li>
+
+                <a href="@Url.Action("Index","RFI",new{area = "Admin",ProjectID = Request.QueryString["ProjectID"] })">
+                    <i class="fas fa-indent"></i>
+                    <span class="title">RFI</span>
+                    <span class="arrow "></span>
+                </a>
+                <!--<ul class="sub-menu">
+                    <li>
+                        <a href="components_pickers.html">
+                        Date & Time Pickers</a>
+                    </li>
+                </ul>-->
+            </li>
+            <!-- BEGIN ANGULARJS LINK -->
+            @*<li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="AngularJS version demo">
+                    <a href="#" target="_blank">
+                        <i class="icon-paper-plane"></i>
+                        <span class="title">
+                            AngularJS Version
+                        </span>
+                    </a>
+                </li>*@
+            <!-- END ANGULARJS LINK -->
+
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </div>
+</div>
+

@@ -1,0 +1,71 @@
+﻿@model MarketPlace_Domain.ViewModel.BillingViewModel.BillingViewModel
+@using (Html.BeginForm("Save", "Invoice", FormMethod.Post, htmlAttributes: new { @class = "form-inline" }))
+{
+
+    <div class="form-horizontal">
+        <h2 class="text-center">@Model.Title</h2>
+        <hr />
+        <h4 class="text-danger">Invoice Details</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(m => m.BillingNumber, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.EditorFor(m => m.BillingNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.BillingNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.DropDownListFor(m => m.BuyerId, new SelectList(Model.lstBuyer, "Id", "Name"), "--Select--", new { @class = "form-control", Id = "SellerId" })
+        </div>
+        <div class="table-otr no-mar">
+            <div class="Tablebox Tablebox2 no-mar">
+                <div class="table-responsive margin-top">
+                    <table id="tblChangeEventItem">
+                        <thead>
+                            <tr>
+                                <th style="width:200px;">Item</th>
+                                <th style="width:129px;">Selling Price</th>
+                                <th style="width:156px;">Cost Price</th>
+                                <th style="width:50px;">Commission Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="event-record-template">
+                                <td>
+                                    @*    @Html.DropDownListFor(model => Model.ChangeEventLineItemId, new SelectList(Model.lstChangeEventLineItem, "Id", "Name"), "--Select--", new { @class = "form-control", Id = "ChangeEventLineItemId", onchange = "RFQ.GetChangeEveneLineItemById('" + Url.Action("GetChangeEveneLineItemDetailById", "RFQ", new { area = "Admin" }) + "','ChangeEventLineItemId');" })*@
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            @if (Model.lstBilling != null)
+                            {
+                                for (int i = 0; i < Model.lstBilling.Count; i++)
+                                {
+                            <tr class="event-record-template">
+                                @*<td style='display:none'>@Html.TextBoxFor(m => m.lstBilling[i].RFQItemId)</td>
+                                  <td style='display:none'>@Html.TextBoxFor(m => m.lstBilling[i].ChangeEventLineitemId)</td>*@
+                                <td>@Html.DropDownListFor(model => Model.lstBilling[i].SellerId, new SelectList(Model.lstSeller, "Id", "Name", Model.lstBilling[i].SellerId), "--Select--", new { @class = "form-control" })</td>
+                                <td>@Html.DropDownListFor(model => Model.lstBilling[i].ItemId, new SelectList(Model.lstItem, "Id", "Name", Model.lstBilling[i].ItemId), "--Select--", new { @class = "form-control" })</td>
+                                <td>@Html.TextBoxFor(m => m.lstBilling[i].CostPrice, new { @class = "form-control valid" })</td>
+                                <td>@Html.TextBoxFor(m => m.lstBilling[i].SellingPrice, new { @class = "form-control valid" })</td>
+                                <td>@Html.TextBoxFor(m => m.lstBilling[i].CommissionPrice, new { @class = "form-control valid" })</td>
+
+                                <td onclick="RFQ.DeleteRFQItems(@Model.lstBilling[i].ItemId,this)"><i class="fa fa-times setting-icon deleteFormat" aria-hidden="true" id="deleteEvent"></i></td>
+                                <td class="hdnDelete" style='display:none'>@Html.TextBoxFor(m => m.lstBilling[i].IsDeleted)</td>
+                            </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        @Html.HiddenFor(m => m.BillingId)
+        <button type="submit" class="btn btn-danger pull-right">Save</button>
+    </div>
+}
+
+
+
+

@@ -1,0 +1,334 @@
+﻿@charset "utf-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700');
+/*** fonts end ***/
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #000;
+    font-family: Ubuntu;
+    height: 100%;
+}
+
+section, source, video {
+    display: block;
+    margin: 0;
+    padding: 0
+}
+
+a {
+    text-decoration: none
+}
+
+a, input, img {
+    outline: none;
+    /*border: none;*/
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input[type="button"], input[type="submit"] {
+    -webkit-appearance: none;
+    font-family: 'Ubuntu Medium';
+    outline: none;
+    border: none;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="search"], select, textarea {
+    border-radius: 0;
+}
+
+a:focus {
+    outline: none !important;
+}
+
+:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: 0;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.clr {
+    clear: both;
+}
+
+::-webkit-input-placeholder, .form-control::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #8e8e8e;
+    font-size: 18px
+}
+
+::-moz-placeholder, .form-control::-moz-placeholder { /* Firefox 19+ */
+    color: #8e8e8e;
+    font-size: 18px
+}
+
+:-ms-input-placeholder, .form-control:-ms-input-placeholder { /* IE 10+ */
+    color: #8e8e8e;
+    font-size: 18px
+}
+
+:-moz-placeholder, .form-control:-moz-placeholder { /* Firefox 18- */
+    color: #8e8e8e;
+    font-size: 18px
+}
+
+.MT-Zero {
+    margin-top: 0;
+}
+
+/*--Small Classes--*/
+section, aside, footer, header, h1, h2, h3, h4, h5, h6, p, span, figure, div, body, html, input, ul, li, a, img, label {
+    margin: 0;
+    padding: 0
+}
+/*.wrapper{ min-height: 100%; height: auto !important;margin: 0 auto ; }*/
+.required {
+    font-size: 13px;
+    float: left;
+    width: 100%;
+    color: #cc5965;
+    padding-left: 5px;
+    line-height: 15px;
+}
+
+.container {
+    max-width: 1175px;
+    width: 100%;
+}
+/*--Button Classes--*/
+.btn-primary {
+    color: #fff;
+    background-color: #1155aa;
+    border-color: #1155aa;
+    margin-right:5px;
+}
+
+/*--Login page css--*/
+.login-bg {
+    background-image: url(../img/body-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: 100%;
+    padding-bottom: 60px;
+}
+
+.login-section {
+    float: left;
+    width: 100%;
+    position: absolute;
+    transform: translate(0,-50%);
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    left: 0;
+    top: 50%;
+}
+
+.login-form h1 {
+    color: #000000;
+    font-size: 36px;
+    font-weight: 300;
+    text-align: center;
+    margin: 30px 0 0px;
+}
+
+    .login-form h1 span {
+        font-size: 16px;
+        font-weight: 300;
+        margin: 10px 0 0px;
+        display: block;
+    }
+
+.login-form input, .login-form select {
+    height: 40px;
+    line-height: normal;
+    padding: 0 30px 0 10px;
+    border-radius: 4px;
+    border-color: #cececd;
+}
+
+.login-form small {
+    font-size: 18px;
+    display: block;
+    padding: 10px 0 0;
+    font-weight: 300;
+    color: #8e8e8e;
+}
+
+.Email {
+    background-image: url(../img/email-icon.png);
+    background-repeat: no-repeat;
+    background-position: 98%;
+}
+
+.Password {
+    background-image: url(../img/password-icon.png);
+    background-repeat: no-repeat;
+    background-position: 98%;
+}
+
+.login-form select {
+    background-image: url(../img/arrow.png);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: 98%;
+}
+
+.checkbox label {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.checkbox input[type="checkbox"] {
+    height: 20px;
+}
+
+.login-form .form-group {
+    margin-bottom: 25px;
+    width: 100%;
+    float: left;
+    margin-top: 0;
+}
+
+.login-form button {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.login-form a {
+    font-size: 18px;
+    font-weight: 300;
+    color: #1155aa;
+}
+
+.login-form .create-project a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1155aa;
+    text-decoration: underline;
+}
+
+/*--Footer page css--*/
+.page-footer {
+    background-color: #000;
+}
+
+.login-bg .page-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+    height: 60px;
+    line-height: 59px;
+}
+
+.page-footer ul > li a {
+    font-size: 14px;
+    color: #8e8e8e;
+}
+
+.page-footer ul > li:hover a {
+    color: #fff;
+}
+
+.copyright {
+    font-size: 14px;
+    color: #8e8e8e;
+    text-align: right;
+}
+
+.page-footer ul > li::after {
+    content: "::";
+    color: #8e8e8e;
+    text-align: center;
+    padding-left: 15px;
+}
+
+.page-footer ul > li:last-child::after {
+    content: "";
+}
+
+/*-- Responsive --*/
+
+    @media (max-width:767px) {
+        .login-bg {
+            background-image: url(../img/mobile-bg.jpg);
+            padding-bottom: 90px;
+        }
+
+            .login-bg .page-footer {
+                height: 90px;
+                line-height: 20px;
+                position: static;
+                padding: 20px 0;
+            }
+
+            .login-bg .page-footer, .copyright {
+                text-align: center;
+            }
+
+        .login-section {
+            position: static;
+            transform: none;
+            -webkit-transform: none;
+            -moz-transform: none;
+            padding: 40px 0;
+        }
+
+        .login-form {
+            float: left;
+            width: 100%;
+            padding-bottom: 0px;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            height: auto !important;
+            margin: 0 auto;
+        }
+    }

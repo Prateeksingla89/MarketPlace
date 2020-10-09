@@ -1,42 +1,231 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    @*<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @*<title>CMS | @ViewBag.Title</title>*@
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/MarketCSS/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    @*<link href="@Url.Content("~/Content/CMS/css/simple-line-icons.min.css")" rel="stylesheet" type="text/css" />*@
+    <link href="@Url.Content("~/Content/MarketCSS/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/MarketCSS/layout.css")" rel="stylesheet" type="text/css" />
+    <link id="style_color" href="@Url.Content("~/Content/MarketCSS/style.css")" rel="stylesheet" type="text/css" />
+    <!-- main-style file css -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+    <link href="@Url.Content("~/Content/MarketCSS/main-style.css")" rel="stylesheet" type="text/css" />
+    @*<link href="@Url.Content("~/Content/jquery.dataTables.min.css")" rel="stylesheet" type="text/css" />*@
+    <link href="@Url.Content("~/Content/MarketCSS/bootstrap-multiselect.css")" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Custom.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="~/favicon.ico" />
+    @*Calendar Css*@
+    <link href="~/Content/Calendar/fullcalendar.min.css" rel="stylesheet" />
+    <link href="~/Content/Calendar/fullcalendar.print.min.css" rel="stylesheet" media='print' />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/ImagePathJs/Imagepath.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div>
+        <div class="page-header-fixed page-quick-sidebar-over-content">
+            <!-- BEGIN HEADER -->
+            <div class="page-header navbar navbar-fixed-top">
+                <!-- BEGIN HEADER INNER -->
+                <div class="page-header-inner">
+                    <!-- BEGIN LOGO -->
+                    <div class="page-logo">
+                        <a href="@Url.Action("Index","DashBoard")">
+                            <img src="~/Content/CMS/img/logo.png" alt="logo" class="logo-default" />
+                        </a>
+                        <div class="menu-toggler sidebar-toggler hide">
+                        </div>
+                    </div>
+                    <!-- END LOGO -->
+                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    </a>
+                    <!-- END RESPONSIVE MENU TOGGLER -->
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav pull-right">
+                            <!-- BEGIN SEARCH DROPDOWN -->
+                            @*<li class="dropdown dropdown-extended dropdown-notification profilehoverdisable" id="header_notification_bar">
+                                    <div class="search">
+                                        <label>
+                                            <span><img src="~/Content/CMS/img/search-icon.png" alt="search-icom"></span>
+                                            <input name="search" placeholder="Search" />
+                                        </label>
+                                    </div>
+                                </li>*@
+                            <!-- END SEARCH DROPDOWN -->
+                            <!-- BEGIN USER LOGIN DROPDOWN -->
+                            <li class="dropdown dropdown-user profilehoverdisable">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <img class="img-circle" src="~/Content/CMS/img/user.jpg" alt="user" />
+                                    @*@if (Session["Permissions"] != null)
+                                        {
+                                            ConstructionManagementSystem_Domain.ViewModel.RolesPermissionViewModel obj = Session["Permissions"] as ConstructionManagementSystem_Domain.ViewModel.RolesPermissionViewModel;
+
+                                            <span class="username username-hide-on-mobile" title="">
+                                                Hi
+                                                @obj.UserName
+                                            </span>
+                                        }*@
+
+
+                                </a>
+                            </li>
+                            <!-- END USER LOGIN DROPDOWN -->
+                            <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                            <li class="dropdown dropdown-quick-sidebar-toggler">
+                                <button type="button" class="btn btn-primary  btn-block" onclick="location.href='@Url.Action("LogOff", "Account" , new { area="" })'">Logout</button>
+                            </li>
+                            <!-- END QUICK SIDEBAR TOGGLER -->
+                        </ul>
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+                <!-- END HEADER INNER -->
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <!-- END HEADER -->
+            <div class="clearfix">
+            </div>
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                <!-- BEGIN SIDEBAR -->
+                @Html.Partial("~/Views/Shared/_SideBar.cshtml")
+                <div id="myModal" class="modal fade CostCode add-usermodal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p id="ConfirmationMessage" style="text-align:center;font-size: 18px;"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnOk">OK</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="myModalConfirmation" class="modal fade add-usermodal add-useredit" data-backdrop="static" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+                            <div class="modal-body">
+                                <p id="ConfirmationMessage" style="text-align:center;font-size: 18px;">Do you really want to delete SubContractor?</p>
+                            </div>
+                            <div class="modal-footer add-usersubmit-buttons">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnConfirmation" request-url="@Url.Action("DeleteSubContractorProject", "Project", new { area = "Admin" })">Confirm</button>
+                                <button type="button" class="btn add-usercancelbutton" data-dismiss="modal" id="btnclose">Cancel</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="myModalConfirmationUser" class="modal fade add-usermodal add-useredit" data-backdrop="static" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+                            <div class="modal-body">
+                                <p id="ConfirmationMessage" style="text-align:center;font-size: 18px;">Do you really want to delete user?</p>
+                            </div>
+                            <div class="modal-footer add-usersubmit-buttons">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnConfirmationUser" request-url="@Url.Action("DeleteSubContractorProject", "Project", new { area = "Admin" })">Confirm</button>
+                                <button type="button" class="btn add-usercancelbutton" data-dismiss="modal" id="btnclose">Cancel</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="myModalTask" class="modal fade add-usermodal add-useredit" data-backdrop="static" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            </div>
+                            <div class="modal-body">
+                                <p id="ConfirmationMessageTask" style="text-align:center;font-size: 18px;"></p>
+                            </div>
+                            <div class="modal-footer add-usersubmit-buttons">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnTask">OK</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- END SIDEBAR -->
+                <!-- BEGIN CONTENT -->
+                <div class="page-content-wrapper">
+                    @RenderBody()
+                </div>
+                <div id="LoadingImage" style="display: none">
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    <!-- BEGIN FOOTER -->
+    @*@Html.Partial("~/Views/Shared/_Footer.cshtml")*@
+    <!-- END FOOTER -->
+    <!-- SCRIPTS -->
+    <script src="@Url.Content("~/Content/js/jquery.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-hover-dropdown.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/jquery.slimscroll.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/theme.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/layout.js")" type="text/javascript"></script>
+    @*<script src="@Url.Content("~/Scripts/jquery.dataTables.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/dataTables.buttons.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery.table2excel.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/summernote.js")" type="text/javascript"></script>*@
+    @*<script src="@Url.Content("~/Scripts/Common.js")" type="text/javascript"></script>*@
+    <script src="@Url.Content("~/Scripts/bootstrap-multiselect.js")" type="text/javascript"></script>
+    <script src="~/Scripts/Setting.js"></script>
+    <script src="~/Scripts/Common.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <script src="~/Content/Calendar/moment.min.js"></script>
+    <script src="~/Content/Calendar/fullcalendar.min.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/additional-methods.js"></script>
+    <link href="~/Content/zebra_datepicker.min.css" rel="stylesheet" />
+    <script src="~/Scripts/zebra_datepicker.min.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            Metronic.init(); // init metronic core components
+            Layout.init(); // init current layout
+        });
+    </script>
+    <!-- END JAVASCRIPTS -->
     @RenderSection("scripts", required: false)
 </body>
+<!-- END BODY -->
 </html>
